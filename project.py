@@ -110,16 +110,16 @@ def logging(collected_data):
 
 
 def history_log():
-    file_csv = 'log.csv'
-    is_file_exist = csv_cheker(file_csv)
+    file_csv = 'log.csv' #создает переменную в которой хранит название файла
+    is_file_exist = csv_cheker(file_csv) # вызывает функцию проверки существует ли файл
 
-    if not is_file_exist:
+    if not is_file_exist: # если файлда нет, он выводит сообщение что файла нет
         print("There is not history file yet :(")
 
-    if is_file_exist:
+    if is_file_exist: #ксли он существует, то он читает его и с помощью функции читения из файла выводит таблицу в консоль from prettytable import from_csv
         with open(file_csv) as fp:
             mytable = from_csv(fp)
-            print(mytable)
+            print(mytable) 
         
 
 def emergency(collected_data):
