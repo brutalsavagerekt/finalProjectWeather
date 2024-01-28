@@ -1,8 +1,11 @@
 import pytest
 import os
-from project import csv_cheker, emergency 
+from unittest.mock import patch, mock_open
+from project import csv_cheker, emergency, history_log
+import io
 from io import StringIO
 import sys
+from prettytable import from_csv
 
 
 ## color palette
@@ -36,7 +39,6 @@ def test_csv_cheker_empty_file():
     os.remove(test_filename)
 
 
-# Функция для перехвата вывода
 def capture_output(function, *args, **kwargs):
     old_stdout = sys.stdout
     sys.stdout = StringIO()
@@ -75,3 +77,12 @@ def test_emergency_normal_conditions():
 
     expected_output = ('')
     assert output == expected_output
+
+
+def test_history_log_file_not_exists():
+    with patch('project.csv_cheker', return_value=False):
+        with patch('sys.stdout', new_callable=io.StringIO) as fake_output:
+            history_log()
+            assert "There is not history file yet :(" in fake_output.getvalue()
+
+

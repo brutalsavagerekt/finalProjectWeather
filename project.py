@@ -1,21 +1,3 @@
-# def main():
-#     ...
-
-
-# def function_1():
-#     ...
-
-
-# def function_2():
-#     ...
-
-
-# def function_n():
-#     ...
-
-
-# if __name__ == "__main__":
-#     main()
 import requests
 import csv
 import json
@@ -58,7 +40,7 @@ def main():
             break
         
         try:
-            api_key = ""
+            api_key = "2fa39491c9894c92991185225232312"
             api_call = f"https://api.weatherapi.com/v1/current.json?key={api_key}&q={city}&aqi=no"
             response = requests.get(api_call)
             response.raise_for_status()
@@ -66,7 +48,7 @@ def main():
             logging(data)
             emergency(data)
             print(f"Location: {YELLOW}{data['location']['name']}, {data['location']['region']}, {data['location']['country']}{YELLOW}")
-            print(f"{RESET}Local Time: {data['location']['localtime']}{RESET}")
+            print(f"{RESET}Local Time: {data['location']['localtime']}{RESET} 🕐")
             if data['current']['temp_c'] < 0:
                 print(f"Current Temperature: {CYAN}{data['current']['temp_c']}°C{CYAN} 🌡️")
             if data['current']['temp_c'] > 0 and data['current']['temp_c'] < 20:
@@ -76,8 +58,8 @@ def main():
             
             # print(f"Current Temperature: {data['current']['temp_c']}°C 🌡️")
             print(f"{RESET}Condition: {data['current']['condition']['text']}{RESET}")
-            print(f"{CYAN}Wind:{CYAN} {RESET}{data['current']['wind_kph']} km/h from {data['current']['wind_dir']}{RESET}")
-            print(f"{BLUE}Humidity:{BLUE} {RESET}{data['current']['humidity']}%{RESET}")
+            print(f"{CYAN}Wind:{CYAN} {RESET}{data['current']['wind_kph']} km/h from {data['current']['wind_dir']}{RESET} 🧭")
+            print(f"{BLUE}Humidity:{BLUE} {RESET}{data['current']['humidity']}%{RESET} 💧")
             return response.raise_for_status()
         except requests.exceptions.HTTPError as err:
             if response.status_code == 400:
@@ -93,7 +75,6 @@ def csv_cheker(file_csv):
 def logging(collected_data):
     file_csv = 'log.csv'
     is_file_exist = csv_cheker(file_csv)
-    # is_file_exist = os.path.isfile(file_csv) and os.path.getsize(file_csv) > 0
     with open(file_csv, 'a', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
 
@@ -110,18 +91,17 @@ def logging(collected_data):
 
 
 def history_log():
-    file_csv = 'log.csv' #создает переменную в которой хранит название файла
-    is_file_exist = csv_cheker(file_csv) # вызывает функцию проверки существует ли файл
+    file_csv = 'log.csv'
+    is_file_exist = csv_cheker(file_csv)
 
-    if not is_file_exist: # если файлда нет, он выводит сообщение что файла нет
+    if not is_file_exist:
         print("There is not history file yet :(")
 
-    if is_file_exist: #ксли он существует, то он читает его и с помощью функции читения из файла выводит таблицу в консоль from prettytable import from_csv
-        with open(file_csv) as fp:
+    if is_file_exist: 
+        with open(file_csv, encoding="utf-8") as fp:
             mytable = from_csv(fp)
-            print(mytable) 
-        
-
+            print(mytable)
+            
 def emergency(collected_data):
     if collected_data['current']['temp_c'] > 30 or collected_data['current']['temp_c'] < -20:
         print(f"{RED}****************************************************{RED}")
