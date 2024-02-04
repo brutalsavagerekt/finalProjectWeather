@@ -31,5 +31,6 @@ If, when starting the program, the user chooses to read the history, the module 
 ![image](https://github.com/brutalsavagerekt/finalProjectWeather/assets/33382983/f0b1f755-4355-465a-b4df-9e457e484de9)
 
 In addition, the program notifies about extreme weather conditions, such as temperatures above 30 degrees Celsius and below -20. As well as wind speeds of more than 90 kilometers per hour.
+
 ![image](https://github.com/brutalsavagerekt/finalProjectWeather/assets/33382983/b87f4edd-7130-4503-b7ea-f4712a7d68a8)
 
