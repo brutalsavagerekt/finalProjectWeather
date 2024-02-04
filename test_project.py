@@ -18,7 +18,7 @@ CYAN = "\033[96m"
 WHITE = "\033[97m"
 RESET = "\033[0m"
 
-
+# csv_cheker function start
 def test_csv_cheker_existing_file():
     test_filename = 'test_file.csv'
     with open(test_filename, 'w') as file:
@@ -37,7 +37,7 @@ def test_csv_cheker_empty_file():
 
     assert csv_cheker(test_filename) == False
     os.remove(test_filename)
-
+# csv_cheker function end
 
 def capture_output(function, *args, **kwargs):
     old_stdout = sys.stdout
@@ -47,6 +47,7 @@ def capture_output(function, *args, **kwargs):
     sys.stdout = old_stdout
     return output
 
+# test emergency function start
 def test_emergency_high_wind():
     data = {'current': {'temp_c': 20, 'wind_kph': 100}}
     output = capture_output(emergency, data)
@@ -78,14 +79,9 @@ def test_emergency_normal_conditions():
     expected_output = ('')
     assert output == expected_output
 
+# test emergency function end
 
-def test_history_log_file_not_exists():
-    with patch('project.csv_cheker', return_value=False):
-        with patch('sys.stdout', new_callable=io.StringIO) as fake_output:
-            history_log()
-            assert "There is not history file yet :(" in fake_output.getvalue()
-
-
+# test notes function start
 def test_notes_not_added():
     with patch('builtins.input', return_value='n'):
         assert notes() == '---'
@@ -97,3 +93,12 @@ def test_notes_not_added_capital():
 def test_notes_add_note():
     with patch('builtins.input', return_value='This is somple text for test'):
         assert notes() == 'This is somple text for test'
+
+# test notes function end
+
+# test history_log file exist
+def test_history_log_file_not_exists():
+    with patch('project.csv_cheker', return_value=False):
+        with patch('sys.stdout', new_callable=io.StringIO) as fake_output:
+            history_log()
+            assert "There is not history file yet :(" in fake_output.getvalue()
