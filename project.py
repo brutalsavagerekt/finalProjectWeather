@@ -40,12 +40,11 @@ def main():
             break
         
         try:
-            api_key = "YOUR_API_KEY"
+            api_key = "PUT_YOUR_API_KEY"
             api_call = f"https://api.weatherapi.com/v1/current.json?key={api_key}&q={city}&aqi=no"
             response = requests.get(api_call)
             response.raise_for_status()
             data = response.json()
-            logging(data)
             emergency(data)
             print(f"Location: {YELLOW}{data['location']['name']}, {data['location']['region']}, {data['location']['country']}{YELLOW}")
             print(f"{RESET}Local Time: {data['location']['localtime']}{RESET} 🕐")
@@ -60,6 +59,7 @@ def main():
             print(f"{RESET}Condition: {data['current']['condition']['text']}{RESET}")
             print(f"{CYAN}Wind:{CYAN} {RESET}{data['current']['wind_kph']} km/h from {data['current']['wind_dir']}{RESET} 🧭")
             print(f"{BLUE}Humidity:{BLUE} {RESET}{data['current']['humidity']}%{RESET} 💧")
+            logging(data)
             return response.raise_for_status()
         except requests.exceptions.HTTPError as err:
             if response.status_code == 400:
@@ -75,19 +75,28 @@ def csv_cheker(file_csv):
 def logging(collected_data):
     file_csv = 'log.csv'
     is_file_exist = csv_cheker(file_csv)
+    note = notes()
     with open(file_csv, 'a', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
 
         if not is_file_exist:
-            writer.writerow(['Location', 'Local Time', 'Current Temperature', 'Condition', 'Wind', 'Humidity'])
+            writer.writerow(['Location', 'Local Time', 'Current Temperature', 'Condition', 'Wind', 'Humidity', 'Note'])
         
         writer.writerow([collected_data['location']['name'], collected_data['location']['localtime'], collected_data['current']['temp_c'], 
                          collected_data['current']['condition']['text'], collected_data['current']['wind_kph'], 
-                         collected_data['current']['humidity']])
+                         collected_data['current']['humidity'],note])
         
 
     print(f"Record added to {file_csv}")
     
+def notes():
+    print("Add note or type N/n to cancel")
+    note = input("Do you want to add note? ")
+    
+    if ((note == 'n') or (note == 'N')):
+        return '---'
+    
+    return note
 
 
 def history_log():

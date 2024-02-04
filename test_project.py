@@ -1,7 +1,7 @@
 import pytest
 import os
-from unittest.mock import patch, mock_open
-from project import csv_cheker, emergency, history_log
+from unittest.mock import patch
+from project import csv_cheker, emergency, history_log, notes
 import io
 from io import StringIO
 import sys
@@ -86,3 +86,14 @@ def test_history_log_file_not_exists():
             assert "There is not history file yet :(" in fake_output.getvalue()
 
 
+def test_notes_not_added():
+    with patch('builtins.input', return_value='n'):
+        assert notes() == '---'
+
+def test_notes_not_added_capital():
+    with patch('builtins.input', return_value='N'):
+        assert notes() == '---'
+
+def test_notes_add_note():
+    with patch('builtins.input', return_value='This is somple text for test'):
+        assert notes() == 'This is somple text for test'

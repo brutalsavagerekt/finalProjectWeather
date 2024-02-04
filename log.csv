@@ -1,8 +1,4 @@
-Location,Local Time,Current Temperature,Condition,Wind,Humidity
-Odesa,2024-01-28 18:40,2.1,Overcast ,27.0,73
-London,2024-01-28 16:42,10.0,Clear,6.8,76
-Odesa,2024-01-28 18:40,2.1,Overcast ,27.0,73
-Oslo,2024-01-28 17:47,2.0,Overcast,25.9,87
-Lviv,2024-01-28 18:48,-0.2,Light snow,10.1,97
-New York,2024-01-28 12:12,4.4,Overcast,25.9,86
-Odesa,2024-01-28 20:30,2.0,Overcast ,27.0,75
+Location,Local Time,Current Temperature,Condition,Wind,Humidity,Note
+Odesa,2024-02-04 18:53,8.1,Cloudy ,18.4,68,Right now is a good weather!
+Odesa,2024-02-04 18:53,8.1,Cloudy ,18.4,68,It's pretty cold here. I want a summer. 
+London,2024-02-04 16:55,13.0,Partly cloudy,33.1,77,---
