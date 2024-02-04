@@ -15,3 +15,21 @@ For the program to work correctly, you need to add your API key in the project.p
 ```python
 api_key = "PUT_YOUR_API_KEY"
 ```
+The main function is responsible for the main functionality and provides the user with a choice:
+- Find out the weather by entering the city
+- View recording history
+- Exit the program
+
+![image](https://github.com/brutalsavagerekt/finalProjectWeather/assets/33382983/f45b8b7a-8530-4d44-b608-6076cd6a5e8a)
+
+If the user chooses to check the weather, the console displays information for the selected location. The user will also be asked to add their observations as a weather note. If the user adds a message, it will be saved in history.
+
+![image](https://github.com/brutalsavagerekt/finalProjectWeather/assets/33382983/7e2dc077-5923-40d0-8742-045cb3d1274a)
+
+If, when starting the program, the user chooses to read the history, the module **prettytable** displays a table in the console.
+
+![image](https://github.com/brutalsavagerekt/finalProjectWeather/assets/33382983/f0b1f755-4355-465a-b4df-9e457e484de9)
+
+In addition, the program notifies about extreme weather conditions, such as temperatures above 30 degrees Celsius and below -20. As well as wind speeds of more than 90 kilometers per hour.
+![image](https://github.com/brutalsavagerekt/finalProjectWeather/assets/33382983/b87f4edd-7130-4503-b7ea-f4712a7d68a8)
+
