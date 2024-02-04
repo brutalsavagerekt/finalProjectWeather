@@ -40,7 +40,7 @@ def main():
             break
         
         try:
-            api_key = "PU_YOUR_API_KEY"
+            api_key = "PUT_YOUR_API_KEY"
             api_call = f"https://api.weatherapi.com/v1/current.json?key={api_key}&q={city}&aqi=no"
             response = requests.get(api_call)
             response.raise_for_status()
