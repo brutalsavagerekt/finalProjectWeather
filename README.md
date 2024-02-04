@@ -10,3 +10,8 @@ However, systematic and daily records of weather as we understand them today beg
 The DSMP program is a tool that can tell you about the current weather anywhere in the world, warn about extreme weather conditions, and provide complete information about basic weather metrics. The program can also store the history of recordings, add notes to the data and read them conveniently in the console.
 
 The program uses a free API - https://www.weatherapi.com/
+
+For the program to work correctly, you need to add your API key in the project.py file:
+```python
+api_key = "PUT_YOUR_API_KEY"
+```
