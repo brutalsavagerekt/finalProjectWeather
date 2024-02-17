@@ -1,6 +1,6 @@
-### DSMP (Digital Societas Meteorologica Palatina)
+### DSMP (Digital Societas Meteorologica Palatina) Weather app
 
-#### Video demo:
+#### Video demo: https://youtu.be/g2IURrVwNcc
 
 #### Description
 The first systematic records of weather began to be kept in Ancient China. As early as the 4th century BC, Chinese astronomers kept records of meteorological phenomena such as winds, precipitation and fogs, which they considered in the context of astrological predictions and effects on crops. In Europe, one of the first to systematically record weather data was the Italian scientist Francesco Petrarca in the 14th century. He recorded weather observations during his travels and studies.
@@ -34,3 +34,9 @@ In addition, the program notifies about extreme weather conditions, such as temp
 
 ![image](https://github.com/brutalsavagerekt/finalProjectWeather/assets/33382983/b87f4edd-7130-4503-b7ea-f4712a7d68a8)
 
+#### File structure
+- log.csv - this is csv file containe all logs
+- project.py - main python file that contain all functionality
+- requirements.txt - txt file with all dependecies
+- temp_test_file.csv - mock file for testing purposes
+- test_project.py - python files with test for functions
